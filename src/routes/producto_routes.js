@@ -2,11 +2,11 @@ const { Router } = require ('express');
 const router= Router();
 const productosController = require('./../controller/producto.controller')
 
-router.get('/',productosController.getproductos);
-router.get("/:id", productosController.getproducto);
-router.post("/", productosController.addproductos);
-router.put("/:id", productosController.updateproducto);
-router.delete("/:id", productosController.deleteproducto);
+router.get('/listar',productosController.getproductos);
+router.get("/pedir:id", productosController.getproducto);
+router.post("/agregar", productosController.addproductos);
+router.put("/modificar/:id", productosController.updateproducto);
+router.delete("/eliminar/:id", productosController.deleteproducto);
 /*router.get('/', (req, res)=>{
     try {
         const result =  mysqlConnection.query("select *from product;");        
