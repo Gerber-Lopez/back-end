@@ -31,7 +31,7 @@ const addcategoria= async (req, res)=> {
         }
 
         await mysqlConnection.query("INSERT INTO categoria SET ?", categoria);      
-        res.json({ message: "categoria añadida" });
+        res.json({ message: "Categoria añadida" });
     } catch (error) {
         res.status(500);
         res.send(error.message);

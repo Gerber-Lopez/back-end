@@ -49,8 +49,8 @@ const updatecliente=async(req, res)=>{
             res.status(400).json({ message: "Bad Request. llene todos los campos." });
         }
         
-        const producto= {nombre_cliente,ci};
-        const result = await mysqlConnection.query("UPDATE cliente SET ? WHERE id_cliente= ?", [producto, id]);
+        const clientedatos= {nombre_cliente,ci};
+        const result = await mysqlConnection.query("UPDATE cliente SET ? WHERE id_cliente= ?", [clientedatos, id]);
         res.json(result);
     } catch (error) {
         res.statu(500);
