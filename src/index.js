@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //router
-app.use('/api/productos', require('./routes/producto_routes'));
+app.use('/api', require('./routes/producto_routes'));
 
 //starting the server
 app.listen(app.get('port'),()=>{

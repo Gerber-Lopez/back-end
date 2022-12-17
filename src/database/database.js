@@ -2,10 +2,10 @@ const mysql= require ('mysql');
 const {promisify}= require('util');
 
 const mysqlConnection = mysql.createPool({
-    host: 'us-east.connect.psdb.cloud',
-    user: 'wh68n3segv6ywnv40199',
-    password: 'pscale_pw_bgoes0QOhYjxq4NzAZp7UbFCNXXyb4p2GiTpFuOFcdO',
-    database: 'backend',
+    host: 'db4free.net',
+    user: 'rootgerber12',
+    password: 'gerberter1220',
+    database: 'bdrestaurant',
     ssl:true
 });
 mysqlConnection.getConnection((err, connection)=>{

@@ -3,7 +3,7 @@ const  mysqlConnection = require("./../database/database");
 
 const getproductos= async (req, res)=> {
     try {       
-        const result = await mysqlConnection.query("SELECT *FROM product;");        
+        const result = await mysqlConnection.query("SELECT *FROM producto");        
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -15,7 +15,7 @@ const getproducto= async (req, res)=> {
     try {
         console.log(req.params);
         const { id } = req.params;
-        const result = await mysqlConnection.query("SELECT IdProducto, nombre, precio, cantidad FROM product WHERE IdProducto=?", id);        
+        const result = await mysqlConnection.query("SELECT id_producto, nombre_producto, precio, id_categoria FROM producto WHERE id_producto=?", id);        
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -25,14 +25,14 @@ const getproducto= async (req, res)=> {
 
 const addproductos= async (req, res)=> {
     try {
-        const{ nombre, precio, cantidad }= req.body;
+        const{ nombre_producto, precio, id_categoria }= req.body;
 
-        if (nombre === undefined || precio === undefined || cantidad === undefined) {
+        if (nombre_producto === undefined || precio === undefined || id_categoria === undefined) {
             res.status(400).json({ message: "Bad Request. llene todos los campos." });
         }
 
-        const producto={nombre, precio, cantidad }; 
-        await mysqlConnection.query("INSERT INTO product SET ?", producto);      
+        const producto={nombre_producto, precio, id_categoria }; 
+        await mysqlConnection.query("INSERT INTO producto SET ?", producto);      
         res.json({ message: "producto añadido" });
     } catch (error) {
         res.status(500);
@@ -43,14 +43,14 @@ const addproductos= async (req, res)=> {
 const updateproducto=async(req, res)=>{
     try {
         const { id } = req.params;
-        const{ nombre, precio, cantidad }= req.body;
+        const{ nombre_producto, precio, id_categoria }= req.body;
 
-        if (id === undefined || nombre === undefined || precio === undefined || cantidad === undefined) {
+        if (id === undefined || nombre_producto === undefined || precio === undefined || id_categoria === undefined) {
             res.status(400).json({ message: "Bad Request. llene todos los campos." });
         }
         
-        const producto= {nombre,precio,cantidad};
-        const result = await mysqlConnection.query("UPDATE product SET ? WHERE IdProducto= ?", [producto, id]);
+        const producto= {nombre_producto,precio,id_categoria};
+        const result = await mysqlConnection.query("UPDATE producto SET ? WHERE id_producto= ?", [producto, id]);
         res.json(result);
     } catch (error) {
         res.statu(500);
@@ -61,7 +61,7 @@ const updateproducto=async(req, res)=>{
 const deleteproducto=async(req, res)=>{
     try {
         const { id } = req.params;
-        const result = await mysqlConnection.query("DELETE FROM product WHERE IdProducto= ?",id);
+        const result = await mysqlConnection.query("DELETE FROM producto WHERE id_producto= ?",id);
         res.json(result);
     } catch (error) {
         res.statu(500);
