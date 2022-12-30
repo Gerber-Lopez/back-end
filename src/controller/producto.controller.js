@@ -78,7 +78,7 @@ exports.uploadfile= async(req, res)=>{
 
 
 
- exports.updateproducto=async(req, res)=>{
+exports.updateproducto=async(req, res)=>{
     try {
         const { id } = req.params;
         const{ imagen,nombre_producto, precio, id_categoria }= req.body;
@@ -91,18 +91,19 @@ exports.uploadfile= async(req, res)=>{
         const result = await mysqlConnection.query("UPDATE producto SET ? WHERE id_producto= ?", [producto, id]);
         res.json(result);
     } catch (error) {
-        res.statu(500);
+        res.status(500);
         res.send(error.message);
     }
 };
-
+ 
 exports.deleteproducto=async(req, res)=>{
     try {
         const { id } = req.params;
         const result = await mysqlConnection.query("DELETE FROM producto WHERE id_producto= ?",id);
-        res.json({message: "Producto Eliminado"});
+        res.json(result);
     } catch (error) {
-        res.statu(500);
+        res.status(500);
         res.send(error.message);
     }
 };
+
