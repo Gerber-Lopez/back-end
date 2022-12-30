@@ -17,7 +17,7 @@ router.delete('/categoria/:id', categoriaController.deletecategoria);
 // tabla producto
 router.get('/producto/',productosController.getproductos);
 router.get("/producto/:id", productosController.getproducto);
-router.post("/producto/", productosController.addproductos);
+router.post("/producto/", productosController.uploadimage, productosController.uploadfile);
 router.put("/producto/:id", productosController.updateproducto);
 router.delete("/producto/:id", productosController.deleteproducto);
 
