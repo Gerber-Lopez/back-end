@@ -100,7 +100,7 @@ exports.deleteproducto=async(req, res)=>{
     try {
         const { id } = req.params;
         const result = await mysqlConnection.query("DELETE FROM producto WHERE id_producto= ?",id);
-        res.json(result);
+        res.json({message: "Producto Eliminado"});
     } catch (error) {
         res.statu(500);
         res.send(error.message);
